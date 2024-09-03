@@ -67,7 +67,7 @@
                 if (earliestTimeAtGloucesterRoad > latestTimeAtGlocuesterRoad) {
                     resultfield.innerText = "Get the Wimbledon train";
                 } else {
-                    let chance = (latestTimeAtGlocuesterRoad - earliestTimeAtGloucesterRoad + 1) * 10;
+                    let chance = Math.max((latestTimeAtGlocuesterRoad - earliestTimeAtGloucesterRoad + 1) * 10, 100);
                     let chanceText;
                     if (chance < 50) {
                         chanceText = "This is pretty unlikely. ";
