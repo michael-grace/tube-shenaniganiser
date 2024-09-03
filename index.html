@@ -67,7 +67,16 @@
                 if (earliestTimeAtGloucesterRoad > latestTimeAtGlocuesterRoad) {
                     resultfield.innerText = "Get the Wimbledon train";
                 } else {
-                    resultfield.innerText = `If there is a Wimbledon train leaving Gloucester Road between ${earliestTimeAtGloucesterRoad} and ${latestTimeAtGlocuesterRoad} minutes from now, get the Circle line. Otherwise, just wait for the Wimbledon train.`;
+                    let chance = (latestTimeAtGlocuesterRoad - earliestTimeAtGloucesterRoad + 1) * 10;
+                    let chanceText;
+                    if (chance < 50) {
+                        chanceText = "This is pretty unlikely. ";
+                    } else if (chance > 50) {
+                        chanceText = "This is pretty likely. ";
+                    } else {
+                        chanceText = "";
+                    }
+                    resultfield.innerText = `If there is a Wimbledon train leaving Gloucester Road between ${earliestTimeAtGloucesterRoad} and ${latestTimeAtGlocuesterRoad} minutes from now, get the Circle line. Otherwise, just wait for the Wimbledon train. ${chanceText}Typically, there is a ${chance}% chance of this.`;
                 }
 
                 return false;
